@@ -5,7 +5,7 @@
 -- e-mail      : sbaldzenka@proton.me
 -- description : https://github.com/sbaldzenka/async_fifo
 
--- Waves
+-- Waves:
 add wave -noupdate -divider testbench
 add wave -noupdate -format Logic -radix HEXADECIMAL -group {testbench} /async_fifo_tb/*
 

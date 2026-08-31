@@ -85,8 +85,8 @@ architecture rtl of async_fifo is
     signal pop_pointer_gray_ff1  : std_logic_vector(ADDR_WIDTH downto 0);
     signal pop_pointer_gray_ff2  : std_logic_vector(ADDR_WIDTH downto 0);
 
-    signal full_flag        : std_logic;
-    signal empty_flag       : std_logic;
+    signal full_flag             : std_logic;
+    signal empty_flag            : std_logic;
 
 begin
 
@@ -163,6 +163,7 @@ begin
     full_flag  <= '1' when (push_pointer_gray = (not pop_pointer_gray_ff2(ADDR_WIDTH downto ADDR_WIDTH-1)
                             & pop_pointer_gray_ff2(ADDR_WIDTH-2 downto 0))) else '0';
     empty_flag <= '1' when (pop_pointer_gray = push_pointer_gray_ff2) else '0';
+
     o_full     <= full_flag;
     o_empty    <= empty_flag;
 

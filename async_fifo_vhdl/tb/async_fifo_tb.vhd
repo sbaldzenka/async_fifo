@@ -87,16 +87,14 @@ architecture behavioral of async_fifo_tb is
     signal wr_en_ff      : std_logic;
     signal wr_data_in_ff : std_logic_vector(DATA_WIDTH-1 downto 0);
 
-    signal rd_en        : std_logic;
-    signal rd_en_ff     : std_logic;
-    signal valid        : std_logic;
-    signal data_out     : std_logic_vector(DATA_WIDTH-1 downto 0);
-    signal full         : std_logic;
-    signal empty        : std_logic;
-    signal almost_full  : std_logic;
-    signal almost_empty : std_logic;
-    signal overflow     : std_logic;
-    signal underflow    : std_logic;
+    signal rd_en         : std_logic;
+    signal rd_en_ff      : std_logic;
+    signal valid         : std_logic;
+    signal data_out      : std_logic_vector(DATA_WIDTH-1 downto 0);
+    signal full          : std_logic;
+    signal empty         : std_logic;
+    signal overflow      : std_logic;
+    signal underflow     : std_logic;
 
 begin
 
