@@ -66,9 +66,6 @@ module async_fifo
     // signals
     reg  [DATA_WIDTH-1:0] mem [FIFO_DEPTH-1:0];
 
-    reg                   rd_valid;
-    reg  [DATA_WIDTH-1:0] rd_data;
-
     reg  [  ADDR_WIDTH:0] push_pointer;
     reg  [  ADDR_WIDTH:0] pop_pointer;
 
@@ -115,15 +112,12 @@ module async_fifo
     // read data from memory
     always @(posedge i_rd_clk) begin
         if (i_rd_en &&!empty_flag) begin
-            rd_valid <= 1'b1;
-            rd_data  <= mem[pop_pointer[ADDR_WIDTH-1:0]];
+            o_rd_valid <= 1'b1;
+            o_rd_data  <= mem[pop_pointer[ADDR_WIDTH-1:0]];
         end else begin
-            rd_valid <= 1'b0;
-            rd_data  <= 'b0;
+            o_rd_valid <= 1'b0;
+            o_rd_data  <= 'b0;
         end
-
-        o_rd_valid <= rd_valid;
-        o_rd_data  <= rd_data;
     end
 
     // binary code to gray code
@@ -171,7 +165,7 @@ module async_fifo
     assign o_full = full_flag;
 
     // empty flag
-    always @(posedge i_rd_clk or negedge i_aresetn) begin
+    always @(*) begin
         if (!i_aresetn) begin
             empty_flag <= 1'b1;
         end else begin

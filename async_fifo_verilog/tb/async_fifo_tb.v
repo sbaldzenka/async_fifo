@@ -119,6 +119,11 @@ module async_fifo_tb
         read_data(16);
         write_data(16);
         read_data(8);
+        read_data(8);
+        fork
+            write_data(16);
+            read_data(20);
+        join
     end
 
     defparam DUT_inst.FIFO_DEPTH = FIFO_DEPTH;
